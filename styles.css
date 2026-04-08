@@ -1285,21 +1285,175 @@ body {
 
 /* ===== RESPONSIVE (for desktop) ===== */
 @media (min-width: 768px) {
-    .app-content {
-        max-width: 430px;
-        margin: 0 auto;
-        left: 50%;
-        transform: translateX(-50%);
+    body {
+        background: var(--bg-primary);
     }
 
     .app-header {
-        max-width: 430px;
+        max-width: 100%;
+    }
+
+    .app-content {
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none;
+        bottom: auto;
+        padding-top: calc(60px + env(safe-area-inset-top));
+        max-width: 100%;
+    }
+
+    .module-content {
+        max-width: 1200px;
         margin: 0 auto;
     }
 
+    /* Desktop navigation - move to sidebar */
     .bottom-nav {
-        max-width: 430px;
-        left: 50%;
-        transform: translateX(-50%);
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: auto;
+        width: 80px;
+        height: 100vh;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 80px 0 20px 0;
+        border-top: none;
+        border-right: 0.5px solid rgba(255, 255, 255, 0.1);
+        background: rgba(28, 28, 30, 0.95);
+        max-width: none;
+        transform: none;
+    }
+
+    .nav-item {
+        padding: 16px 8px;
+        gap: 8px;
+    }
+
+    .nav-icon {
+        width: 28px;
+        height: 28px;
+    }
+
+    .nav-label {
+        font-size: 10px;
+        font-weight: 600;
+    }
+
+    /* Adjust content to account for sidebar */
+    .app-content {
+        padding-left: 100px;
+    }
+
+    /* Stats grid - show all cards in a row */
+    .stats-scroll {
+        overflow: visible;
+        margin: 0 0 24px 0;
+        padding: 0;
+    }
+
+    .stat-card {
+        width: auto;
+        flex: 1;
+    }
+
+    /* Charts - side by side */
+    .chart-section {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .chart-card {
+        margin-bottom: 0;
+    }
+
+    /* Activity and charts in same row */
+    .activity-section {
+        grid-column: span 2;
+    }
+
+    /* Two column layout for cards */
+    .meetings-list,
+    .decisions-list,
+    .tasks-list,
+    .knowledge-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    /* Task summary - larger cards */
+    .task-summary-cards {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* Communication section */
+    .communication-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        align-items: start;
+    }
+
+    .communication-section h2 {
+        grid-column: span 2;
+    }
+
+    /* Search bar wider */
+    .search-bar input {
+        max-width: 600px;
+    }
+
+    /* Welcome section larger */
+    .greeting {
+        font-size: 42px;
+    }
+
+    .subtitle {
+        font-size: 18px;
+    }
+
+    /* Modals - centered on desktop */
+    .modal {
+        align-items: center;
+    }
+
+    .modal-sheet {
+        border-radius: var(--radius-xl);
+        width: 600px;
+        max-height: 80vh;
+    }
+
+    .modal-handle {
+        display: none;
+    }
+
+    /* Quick add grid */
+    .quick-add-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Extra large screens */
+@media (min-width: 1400px) {
+    .module-content {
+        max-width: 1400px;
+    }
+
+    .meetings-list,
+    .decisions-list,
+    .tasks-list,
+    .knowledge-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .bottom-nav {
+        width: 100px;
+    }
+
+    .app-content {
+        padding-left: 120px;
     }
 }
